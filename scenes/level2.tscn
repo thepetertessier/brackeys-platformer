@@ -1,17 +1,18 @@
-[gd_scene load_steps=16 format=4 uid="uid://cvl2jm1c4axou"]
+[gd_scene load_steps=17 format=4 uid="uid://hu7x85p463la"]
 
-[ext_resource type="PackedScene" uid="uid://csmdct2cmvpu2" path="res://scenes/player.tscn" id="1_6n4gq"]
-[ext_resource type="Script" path="res://scripts/game_manager.gd" id="1_wo6lv"]
-[ext_resource type="Texture2D" uid="uid://f3guykxibx87" path="res://assets/brackeys_platformer_assets/sprites/world_tileset.png" id="2_4ew5v"]
-[ext_resource type="PackedScene" uid="uid://unylc31ujxxx" path="res://scenes/platform.tscn" id="3_lq7ny"]
-[ext_resource type="PackedScene" uid="uid://dv8x0eviwu25e" path="res://scenes/coin.tscn" id="4_78aqm"]
-[ext_resource type="PackedScene" uid="uid://bhe023joiybqj" path="res://scenes/kill_zone.tscn" id="5_k4nyv"]
-[ext_resource type="PackedScene" uid="uid://bsxouo0c0bktp" path="res://scenes/slime.tscn" id="6_gqf5m"]
-[ext_resource type="FontFile" uid="uid://dm5qmtokb4jcc" path="res://assets/brackeys_platformer_assets/fonts/PixelOperator8.ttf" id="7_qdb5p"]
-[ext_resource type="FontFile" uid="uid://fskuyhm7mkoj" path="res://assets/brackeys_platformer_assets/fonts/PixelOperator8-Bold.ttf" id="9_m5dyd"]
+[ext_resource type="Script" path="res://scripts/game_manager.gd" id="1_0av7p"]
+[ext_resource type="FontFile" uid="uid://fskuyhm7mkoj" path="res://assets/brackeys_platformer_assets/fonts/PixelOperator8-Bold.ttf" id="2_33yq2"]
+[ext_resource type="Texture2D" uid="uid://f3guykxibx87" path="res://assets/brackeys_platformer_assets/sprites/world_tileset.png" id="3_2ubo3"]
+[ext_resource type="PackedScene" uid="uid://csmdct2cmvpu2" path="res://scenes/player.tscn" id="4_j8qap"]
+[ext_resource type="PackedScene" uid="uid://dv8x0eviwu25e" path="res://scenes/coin.tscn" id="5_q3ogq"]
+[ext_resource type="PackedScene" uid="uid://bhe023joiybqj" path="res://scenes/kill_zone.tscn" id="6_0rb5x"]
+[ext_resource type="PackedScene" uid="uid://unylc31ujxxx" path="res://scenes/platform.tscn" id="7_rplh2"]
+[ext_resource type="PackedScene" uid="uid://bsxouo0c0bktp" path="res://scenes/slime.tscn" id="8_ebc8b"]
+[ext_resource type="FontFile" uid="uid://dm5qmtokb4jcc" path="res://assets/brackeys_platformer_assets/fonts/PixelOperator8.ttf" id="9_5para"]
+[ext_resource type="PackedScene" uid="uid://d0nixgmxf8m3g" path="res://scenes/portal_fruit.tscn" id="10_ch0jt"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_iweff"]
-texture = ExtResource("2_4ew5v")
+texture = ExtResource("3_2ubo3")
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 1:0/0 = 0
@@ -178,6 +179,21 @@ sources/0 = SubResource("TileSetAtlasSource_iweff")
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_wsonb"]
 
+[sub_resource type="Animation" id="Animation_ggu2o"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(336, 21)]
+}
+
 [sub_resource type="Animation" id="Animation_2pl0v"]
 resource_name = "move"
 length = 1.5
@@ -195,21 +211,6 @@ tracks/0/keys = {
 "values": [Vector2(336, 21), Vector2(448, 21)]
 }
 
-[sub_resource type="Animation" id="Animation_ggu2o"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(336, 21)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_lne4c"]
 _data = {
 "RESET": SubResource("Animation_ggu2o"),
@@ -220,7 +221,7 @@ _data = {
 
 [node name="GameManager" type="Node" parent="."]
 unique_name_in_owner = true
-script = ExtResource("1_wo6lv")
+script = ExtResource("1_0av7p")
 
 [node name="ScoreLabel" type="Label" parent="GameManager"]
 offset_left = 504.0
@@ -228,7 +229,7 @@ offset_top = -156.0
 offset_right = 610.0
 offset_bottom = -137.0
 theme_override_colors/font_color = Color(0.0117647, 0.14902, 0.34902, 1)
-theme_override_fonts/font = ExtResource("9_m5dyd")
+theme_override_fonts/font = ExtResource("2_33yq2")
 theme_override_font_sizes/font_size = 8
 text = "You collected X coins."
 horizontal_alignment = 1
@@ -248,7 +249,7 @@ use_parent_material = true
 tile_map_data = PackedByteArray("AAD//wEAAAAAAAAAAAAAAAEAAAAAAAAAAAD+/wMAAAAAAAAAAAD9/wMAAAAAAAAAAAABAAMAAAAGAAAAAAACAAMAAAAGAAAAAAADAAMAAAAGAAAAAAAHAAMAAAAGAAAAAAAIAAMAAAAGAAAAAAALAAMAAAAGAAAAAAAMAAMAAAAGAAAAAAD//wIAAAAAAAEAAAD//wMAAAAAAAEAAAD//wQAAAAAAAEAAAD//wUAAAAAAAEAAAAAAAUAAAAAAAEAAAAAAAQAAAAAAAEAAAAAAAMAAAABAAAAAAAAAAIAAAAAAAEAAAD+/wQAAAAAAAEAAAD+/wUAAAABAAAAAAD9/wUAAAAAAAEAAAD9/wQAAAAAAAEAAAABAAQAAAAGAAEAAAACAAQAAAAGAAEAAAADAAQAAAAIAAEAAAADAAUAAAAGAAEAAAACAAUAAAAGAAEAAAABAAUAAAAGAAEAAAAHAAQAAAAGAAEAAAAHAAUAAAAIAAEAAAAIAAUAAAAGAAEAAAAIAAQAAAAGAAEAAAALAAQAAAAGAAEAAAALAAUAAAAGAAEAAAAMAAUAAAAGAAEAAAAMAAQAAAAIAAEAAAACAP3/AAAAAAAAAAADAPz/AAAAAAAAAAAEAPz/AAAAAAAAAAACAP7/AAAAAAEAAAADAP7/AAABAAAAAAAEAP7/AAAAAAEAAAAEAP3/AAAAAAEAAAADAP3/AAAAAAEAAAAFAP7/AAAAAAAAAAAGAP7/AAAAAAAAAAAJAP7/AAAAAAAAAAAKAP3/AAAAAAAAAAALAP3/AAAAAAAAAAAMAP7/AAAAAAAAAAAJAP//AAAAAAEAAAAKAP//AAABAAAAAAALAP//AAAAAAEAAAAMAP//AAAAAAEAAAAKAP7/AAAAAAEAAAALAP7/AAAAAAEAAAAFAP//AAAAAAEAAAAGAP//AAAAAAEAAAD+/wIAAAABAAAAAAAEAAMAAAAJAAAAAAAFAAMAAAAKAAAAAAAGAAMAAAALAAAAAAAHAP7/AAAJAAAAAAAIAP7/AAALAAAAAAANAP//AAAEAAAAAAANAAAAAAAEAAEAAAAOAP//AAAEAAAAAAAOAAAAAAAEAAEAAAAPAP//AAAEAAAAAAAPAAAAAAAEAAEAAAAPAAEAAAAEAAEAAAAQAAAAAAAFAAAAAAAQAAEAAAAEAAEAAAAQAAIAAAAEAAEA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")
 tile_set = SubResource("TileSet_5ujqe")
 
-[node name="Player" parent="." instance=ExtResource("1_6n4gq")]
+[node name="Player" parent="." instance=ExtResource("4_j8qap")]
 position = Vector2(0, -5)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
@@ -260,37 +261,37 @@ position_smoothing_enabled = true
 
 [node name="Coins" type="Node" parent="."]
 
-[node name="coin" parent="Coins" instance=ExtResource("4_78aqm")]
+[node name="coin" parent="Coins" instance=ExtResource("5_q3ogq")]
 position = Vector2(40, 34)
 
-[node name="coin2" parent="Coins" instance=ExtResource("4_78aqm")]
+[node name="coin2" parent="Coins" instance=ExtResource("5_q3ogq")]
 position = Vector2(184, 34)
 
-[node name="coin3" parent="Coins" instance=ExtResource("4_78aqm")]
+[node name="coin3" parent="Coins" instance=ExtResource("5_q3ogq")]
 position = Vector2(199, 34)
 
-[node name="coin4" parent="Coins" instance=ExtResource("4_78aqm")]
+[node name="coin4" parent="Coins" instance=ExtResource("5_q3ogq")]
 position = Vector2(176, -80)
 
-[node name="coin5" parent="Coins" instance=ExtResource("4_78aqm")]
+[node name="coin5" parent="Coins" instance=ExtResource("5_q3ogq")]
 position = Vector2(293, -68)
 
-[node name="coin6" parent="Coins" instance=ExtResource("4_78aqm")]
+[node name="coin6" parent="Coins" instance=ExtResource("5_q3ogq")]
 position = Vector2(481, 0)
 
-[node name="coin7" parent="Coins" instance=ExtResource("4_78aqm")]
+[node name="coin7" parent="Coins" instance=ExtResource("5_q3ogq")]
 position = Vector2(786, -61)
 
-[node name="coin9" parent="Coins" instance=ExtResource("4_78aqm")]
+[node name="coin9" parent="Coins" instance=ExtResource("5_q3ogq")]
 position = Vector2(809, -61)
 
-[node name="coin8" parent="Coins" instance=ExtResource("4_78aqm")]
+[node name="coin8" parent="Coins" instance=ExtResource("5_q3ogq")]
 position = Vector2(761, -61)
 
-[node name="coin10" parent="Coins" instance=ExtResource("4_78aqm")]
+[node name="coin10" parent="Coins" instance=ExtResource("5_q3ogq")]
 position = Vector2(561, -145)
 
-[node name="KillZone" parent="." instance=ExtResource("5_k4nyv")]
+[node name="KillZone" parent="." instance=ExtResource("6_0rb5x")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="KillZone"]
 position = Vector2(1, 114)
@@ -298,10 +299,13 @@ shape = SubResource("WorldBoundaryShape2D_wsonb")
 
 [node name="Platforms" type="Node" parent="."]
 
-[node name="Platform" parent="Platforms" instance=ExtResource("3_lq7ny")]
+[node name="Platform" parent="Platforms" instance=ExtResource("7_rplh2")]
 position = Vector2(1, -20)
 
-[node name="Platform2" parent="Platforms" instance=ExtResource("3_lq7ny")]
+[node name="Platform3" parent="Platforms" instance=ExtResource("7_rplh2")]
+position = Vector2(505, -140)
+
+[node name="Platform2" parent="Platforms" instance=ExtResource("7_rplh2")]
 position = Vector2(336, 21)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Platforms/Platform2"]
@@ -310,7 +314,7 @@ libraries = {
 }
 autoplay = "move"
 
-[node name="Slime" parent="." instance=ExtResource("6_gqf5m")]
+[node name="Slime" parent="." instance=ExtResource("8_ebc8b")]
 position = Vector2(528, 48)
 
 [node name="Labels" type="Node" parent="."]
@@ -321,7 +325,7 @@ offset_top = 36.0
 offset_right = -56.0
 offset_bottom = 50.0
 theme_override_colors/font_color = Color(0.0117647, 0.14902, 0.34902, 1)
-theme_override_fonts/font = ExtResource("7_qdb5p")
+theme_override_fonts/font = ExtResource("9_5para")
 theme_override_font_sizes/font_size = 8
 text = "Space to jump."
 
@@ -331,7 +335,7 @@ offset_top = 46.0
 offset_right = 445.0
 offset_bottom = 60.0
 theme_override_colors/font_color = Color(0.0117647, 0.14902, 0.34902, 1)
-theme_override_fonts/font = ExtResource("7_qdb5p")
+theme_override_fonts/font = ExtResource("9_5para")
 theme_override_font_sizes/font_size = 8
 text = "Falling hurts"
 
@@ -341,7 +345,7 @@ offset_top = -84.0
 offset_right = 775.0
 offset_bottom = -70.0
 theme_override_colors/font_color = Color(0.0117647, 0.14902, 0.34902, 1)
-theme_override_fonts/font = ExtResource("7_qdb5p")
+theme_override_fonts/font = ExtResource("9_5para")
 theme_override_font_sizes/font_size = 8
 text = "Almost there..."
 
@@ -351,7 +355,10 @@ offset_top = -172.0
 offset_right = 598.0
 offset_bottom = -158.0
 theme_override_colors/font_color = Color(0.0117647, 0.14902, 0.34902, 1)
-theme_override_fonts/font = ExtResource("7_qdb5p")
+theme_override_fonts/font = ExtResource("9_5para")
 theme_override_font_sizes/font_size = 8
 text = "Great job!"
 horizontal_alignment = 1
+
+[node name="PortalFruit" parent="." instance=ExtResource("10_ch0jt")]
+position = Vector2(472, -220)
